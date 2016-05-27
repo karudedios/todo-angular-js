@@ -28,5 +28,10 @@
     "express": "^4.13.4",
     "http": "0.0.0",
     "mongoose": "^4.4.19"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-copy": "0.0.2"
   }
 }
