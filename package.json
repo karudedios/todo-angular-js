@@ -1,0 +1,32 @@
+{
+  "name": "todo-angular-js",
+  "version": "0.0.0",
+  "description": "TODO App built using MEAN",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karudedios/todo-angular-js.git"
+  },
+  "keywords": [
+    "mongo",
+    "express",
+    "angular",
+    "node",
+    "mean",
+    "todo"
+  ],
+  "author": "Carlos de Dios <c.dedios@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karudedios/todo-angular-js/issues"
+  },
+  "homepage": "https://github.com/karudedios/todo-angular-js#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "http": "0.0.0",
+    "mongoose": "^4.4.19"
+  }
+}
