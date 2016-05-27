@@ -4,7 +4,9 @@
   "description": "TODO App built using MEAN",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:back": "jshint server/",
+    "lint:spec": "jshint specs/",
+    "test": "mocha --colors specs/"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,10 @@
   },
   "devDependencies": {
     "bower": "^1.7.9",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
     "gulp": "^3.9.1",
-    "gulp-copy": "0.0.2"
+    "gulp-copy": "0.0.2",
+    "mocha": "^2.5.3"
   }
 }
