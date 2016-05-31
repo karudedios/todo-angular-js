@@ -9,7 +9,8 @@
     "lint": "npm run lint:back && npm run lint:spec",
     "test": "mocha --colors specs/",
     "cover": "istanbul cover _mocha -- -R spec specs/ --recursive",
-    "build": "npm run lint && npm run cover"
+    "build": "npm run lint && npm run cover",
+    "post-build": "rm -rf coverage/"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,7 @@
     "mongoose": "^4.4.19"
   },
   "engines": {
-    "node": "=6.*.*"
+    "node": "=6.2.0"
   },
   "devDependencies": {
     "bower": "^1.7.9",
