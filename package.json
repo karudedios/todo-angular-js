@@ -4,9 +4,12 @@
   "description": "TODO App built using MEAN",
   "main": "server.js",
   "scripts": {
-    "lint:back": "jshint server/",
+    "lint:back": "jshint features/",
     "lint:spec": "jshint specs/",
-    "test": "mocha --colors specs/"
+    "lint": "npm run lint:back && npm run lint:spec",
+    "test": "mocha --colors specs/",
+    "cover": "istanbul cover _mocha -- -R spec specs/ --recursive",
+    "build": "npm run lint && npm run cover"
   },
   "repository": {
     "type": "git",
@@ -31,12 +34,17 @@
     "http": "0.0.0",
     "mongoose": "^4.4.19"
   },
+  "engines": {
+    "node": "=6.*.*"
+  },
   "devDependencies": {
     "bower": "^1.7.9",
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "gulp": "^3.9.1",
     "gulp-copy": "0.0.2",
+    "istanbul": "^0.4.3",
+    "jshint": "^2.9.2",
     "mocha": "^2.5.3"
   }
 }
