@@ -4,7 +4,8 @@ const Todo          = require('../../features/todo/model/todo');
 const CreateTodo    =  require('../../features/todo/services/createTodo');
 
 describe("create todo", () => {
-  before(() => {
+  before((done) => {
+    new DatabaseMock().connect(done);
     chai.should();
   });
   

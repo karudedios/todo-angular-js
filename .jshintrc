@@ -1,0 +1,14 @@
+{
+  "esversion":  6,
+  "laxbreak":   true,
+  "boss":       true,
+  "node":       true,
+  "eqeqeq":     true,
+  "newcap":     false,
+  "undef":      true,
+  "unused":     true,
+  "onecase":    true,
+  "lastsemic":  true,
+  "mocha":      true,
+  "predef" : ["define", "before", "it"]
+}
