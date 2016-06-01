@@ -1,0 +1,30 @@
+{
+  "name": "todo-angular-js",
+  "description": "TODO App built using MEAN",
+  "main": "server.js",
+  "authors": [
+    "Carlos de Dios <c.dedios@outlook.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mongo",
+    "express",
+    "angular",
+    "node",
+    "mean",
+    "todo"
+  ],
+  "homepage": "https://github.com/karudedios/todo-angular-js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "angular-ui-router": "^0.3.0",
+    "Materialize": "materialize#^0.97.6"
+  }
+}
