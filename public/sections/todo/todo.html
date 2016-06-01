@@ -1,7 +1,20 @@
-<ul class="collection with-header">
+<ul class="collection with-header ">
     <li class="collection-header"><h4>TODO's List</h4></li>
-    <li class="collection-item"><div>Eat<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-    <li class="collection-item"><div>Sleep<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-    <li class="collection-item"><div>Rave<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-    <li class="collection-item"><div>Repeat<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+    <li class="collection-item avatar " ng-repeat="todo in ctrl.todos">
+        <i class="material-icons circle {{todo.color}} ">circle</i>
+        <span class="title">{{todo.name}}</span>
+        <div class=" ">
+            <p >
+                <label class=" container ">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum
+                    ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del
+                    T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal
+                    manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien
+                    ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original.
+                    Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de
+                    Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el
+                    cual incluye versiones de Lorem Ipsum.</label>
+            </p>
+            <a href="" class="secondary-content "><i class="material-icons">edit</i></a>
+        </div>
+    </li>
 </ul>
