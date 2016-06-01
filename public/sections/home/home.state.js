@@ -6,6 +6,6 @@ function HomeStateConfig($stateProvider){
     $stateProvider.state('app.home',{
         parent : 'app',
         url : '/',
-        templateUrl : 'home/home.html'
+        templateUrl : 'sections/home/home.html'
     });
 }
