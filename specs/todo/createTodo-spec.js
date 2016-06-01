@@ -26,7 +26,7 @@ describe('create todo', () => {
     return new CreateTodo(Todo)
       .create({ name })
       .then(todo => {
-        todo._id.should.be.defined;
+        todo._id.should.not.equal(undefined);
         todo.name.should.equal(name);
       });
   });
