@@ -12,23 +12,15 @@ describe('create todo', () => {
   });
   
   after((done) => {
-    db.clearDb(done);
+    db.clearDb(function() {
+      db.disconnect();
+      done();
+    });
   });
   
   it('should ask for the dependencies it needs', () => {
     CreateTodo.length.should.equal(1);
     (() => new CreateTodo(Todo)).should.not.throw();
-  });
-  
-  it('should perform the creation when .create is called', () => {
-    const name = 'Write a book';
-    
-    return new CreateTodo(Todo)
-      .create({ name })
-      .then(todo => {
-        todo._id.should.not.equal(undefined);
-        todo.name.should.equal(name);
-      });
   });
   
   it('should gracefully fail if required fields are invalid', () => {
@@ -44,6 +36,17 @@ describe('create todo', () => {
       .create({ })
       .catch(err => {
         err.message.should.contain('"todo.name" is required');
+      });
+  });
+  
+  it('should perform the creation when .create is called', () => {
+    const name = 'Write a book';
+    
+    return new CreateTodo(Todo)
+      .create({ name })
+      .then(todo => {
+        todo._id.should.not.equal(undefined);
+        todo.name.should.equal(name);
       });
   });
 });
