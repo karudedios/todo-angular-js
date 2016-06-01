@@ -24,6 +24,38 @@ function TodoService($http){
                 {
                     name : 'Repeat',
                     color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
+                },
+                {
+                    name : 'Repeat',
+                    color : 'green'
                 }
             ];
 

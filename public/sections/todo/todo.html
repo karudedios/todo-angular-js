@@ -4,8 +4,17 @@
         <input type="text" placeholder="Search" ng-model="findTodo">
     </li>
     <li class="collection-item" ng-repeat="todo in ctrl.todos | filter : findTodo">
-        <i class="material-icons {{todo.color}} waves-circle tiny ">circle</i>
+        <a><i class="material-icons {{todo.color}} waves-circle tiny ">circle</i></a>
         <strong> {{todo.name}}</strong>
         <a href="" class="secondary-content "><i class="material-icons">edit</i></a>
     </li>
 </ul>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue-grey">
+        <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating green "><i class="material-icons">add</i></a></li>
+    </ul>
+</div>
