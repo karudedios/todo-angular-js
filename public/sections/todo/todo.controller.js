@@ -1,27 +1,11 @@
 angular.module('todoApp')
-    .controller('TodoController', ['$scope', TodoController]);
+    .controller('TodoController', ['$scope', 'TodoService', TodoController]);
 
-function TodoController($scope) {
+function TodoController($scope, TodoService) {
     var self = this;
 
-    self.todos = [
-        {
-            name : 'Eat',
-            color : 'red'
-        },
-        {
-            name : 'Sleep',
-            color : 'blue'
-        },
-        {
-            name : 'Rave',
-            color : 'yellow'
-        },
-        {
-            name : 'Repeat',
-            color : 'green'
-        }
-    ]
-
+    TodoService.findAll(function(todos){
+       self.todos =  todos;
+    });
 }
 
