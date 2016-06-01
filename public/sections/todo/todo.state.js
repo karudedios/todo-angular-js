@@ -6,8 +6,9 @@ function TodoStateConfig($stateProvider) {
         .state('app.todo', {
             url : '/todo',
             parent : 'app',
-            controller : 'TodoController as ctrl',
-            templateUrl : 'sections/todo/todo.html'
+            templateUrl : 'sections/todo/todo.html',
+            controller : 'TodoController as ctrl'
+
         });
 
 }

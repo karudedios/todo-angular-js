@@ -7,7 +7,8 @@ function AppStateConfig($stateProvider, $urlRouterProvider){
         abstract : true,
         views : {
             'header' : {
-                templateUrl : 'layout/header.html'
+                templateUrl : 'layout/header.html',
+                controller : 'HeaderController'
             },
             'content' : {
                 template : '<div class="container" ui-view></div>'
