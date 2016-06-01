@@ -7,7 +7,6 @@ const env       = require('gulp-env');
 const mocha     = require('gulp-mocha');
 const rename    = require('gulp-rename');
 const transform = require('gulp-transform');
-const copy      = require('gulp-contrib-copy');
 
 const specSrc = path.join('.', 'specs', '**', '*-spec.js');
 
@@ -31,7 +30,7 @@ gulp.task('make:config', () => {
 });
 
 gulp.task('run:spec', ['make:config'], () => {
-  const mochaRunner = mocha({ reporter: 'dot' });
+  const mochaRunner = mocha({ reporter: 'nyan' });
   const environment = env({ file: '.config-spec.json' });
   
   return gulp.src(specSrc)

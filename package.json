@@ -45,12 +45,10 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "gulp": "^3.9.1",
-    "gulp-contrib-copy": "^0.1.2",
     "gulp-env": "^0.4.0",
     "gulp-mocha": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-transform": "^1.0.6",
-    "gulp-watch": "^4.3.6",
     "istanbul": "^0.4.3",
     "jshint": "^2.9.2",
     "mocha": "^2.5.3"
