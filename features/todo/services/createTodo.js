@@ -1,7 +1,8 @@
 const Q   = require('q');
 const Joi = require('joi');
+const validateSchema  = require('../../../utils/validateSchema');
 
-const todoValidation = Joi.object().keys({
+const todoSchema = Joi.object().keys({
   name: Joi.string().required().label('todo.name')
 }).label('todo');
 
@@ -10,18 +11,10 @@ module.exports = class CreateTodo {
     Object.assign(this, { Todo });
   }
   
-  create(source) {
-    return Q.when(source)
-      .then(source => {
-        const validation = todoValidation.validate(source);
-        
-        if (validation.error) {
-          throw validation.error;
-        }
-        
-        return source;
-      })
-      .then(todo => {
+  create(todo) {
+    return Q.when(todo)
+      .then(validateSchema(todoSchema, todo))
+      .then(() => {
         return Q.ninvoke(this.Todo, 'create', todo);
       });
   }

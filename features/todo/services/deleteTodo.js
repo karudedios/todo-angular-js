@@ -1,28 +1,19 @@
 const Q   = require('q');
 const Joi = require('joi');
+const validateSchema  = require('../../../utils/validateSchema');
 
-const objectIdValidation = Joi.alternatives(Joi.object(), Joi.string().length(12)).required().label('todo._id');
+const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(12)).required().label('todo._id');
 
 module.exports = class DeleteTodo {
   constructor(Todo) {
     Object.assign(this, { Todo });
   }
   
-  delete(objectId) {
-    return Q.when(objectId)
-      .then(oid => {
-        const validation = objectIdValidation.validate(oid);
-        
-        if(validation.error) {
-          throw validation.error;
-        }
-        
-        return oid;
-      })
-      .then(oid => {
-        return Q.ninvoke(this.Todo, 'findOneAndRemove', {
-          _id: oid
-        });
+  delete(_id) {
+    return Q.when()
+      .then(validateSchema(objectIdSchema, _id))
+      .then(() => {
+        return Q.ninvoke(this.Todo, 'findOneAndRemove', { _id });
       });
   }
 };
