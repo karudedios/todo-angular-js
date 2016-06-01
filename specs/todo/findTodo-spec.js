@@ -5,6 +5,7 @@ const FindTodo    =  require('../../features/todo/services/findTodo');
 const CreateTodo    =  require('../../features/todo/services/createTodo');
 
 describe('find todo', () => {
+  let _todos = [];
   let firstTodo = {};
   let secondTodo = {};
   let should;
@@ -19,10 +20,9 @@ describe('find todo', () => {
     
     createTodo.create({ name: 'first!' })
       .then(newTodo => {
-        firstTodo = newTodo;
         return createTodo.create({ name: 'second!' })
           .then(newerTodo => {
-            secondTodo = newerTodo;
+            _todos = [firstTodo, secondTodo] = [newTodo, newerTodo];
             done();
           });
       });
@@ -70,6 +70,40 @@ describe('find todo', () => {
         .findOne({ name: 'nope' })
         .then(todo => {
           should.not.exist(todo);
+        });
+    });
+  });
+  
+  describe('find', () => {
+    it('should gracefully fail if invalid predicate is provided', () => {
+      return new FindTodo(Todo)
+        .find(undefined)
+        .catch(err => {
+          err.message.should.contain('"predicate" must be an object');
+        });
+    });
+    
+    it('should retrieve all todos if empty predicate is provided', () => {
+      return new FindTodo(Todo)
+        .find({ })
+        .then(todos => {
+          todos.length.should.equal(_todos.length);
+        });
+    });
+    
+    it('should retrieve all todos matching a given predicate', () => {
+      return new FindTodo(Todo)
+        .find({ name: firstTodo.name })
+        .then(todos => {
+          todos.length.should.equal(1);
+        });
+    });
+    
+    it('should return an empty object if nothing was found', () => {
+      return new FindTodo(Todo)
+        .find({ name: 'nope' })
+        .then(todos => {
+          todos.should.deep.equal([]);
         });
     });
   });
