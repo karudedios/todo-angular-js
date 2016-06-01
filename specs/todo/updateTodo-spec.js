@@ -38,7 +38,7 @@ describe('update todo', () => {
     return new UpdateTodo(Todo)
       .update(undefined, { })
       .catch(err => {
-        err.message.should.contain('"todo._id" is required')
+        err.message.should.contain('"todo._id" is required');
       });
   });
   
@@ -48,7 +48,7 @@ describe('update todo', () => {
     return new UpdateTodo(Todo)
       .update(oid, { })
       .catch(err => {
-        err.message.should.contain('"todo._id" length must be 12 characters long')
+        err.message.should.contain('"todo._id" length must be 12 characters long');
       });
   });
   
