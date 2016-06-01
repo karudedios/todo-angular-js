@@ -7,7 +7,7 @@ const predicateSchema = Joi.object().keys({
   name: Joi.string().optional().label('todo.name'),
   desc: Joi.string().optional().label('todo.desc'),
   color: Joi.string().regex(/#[a-f0-9]{6}/i).optional().label('todo.color')
-}).label('todo');
+}).required().label('predicate');
 
 module.exports = class FindTodo {
   constructor(Todo) {

@@ -45,7 +45,7 @@ describe('find todo', () => {
       return new FindTodo(Todo)
         .findOne(undefined)
         .catch(err => {
-          err.message.should.contain('"predicate" must be an object');
+          err.message.should.contain('"predicate" is required');
         });
     });
     
@@ -79,7 +79,7 @@ describe('find todo', () => {
       return new FindTodo(Todo)
         .find(undefined)
         .catch(err => {
-          err.message.should.contain('"predicate" must be an object');
+          err.message.should.contain('"predicate" is required');
         });
     });
     
