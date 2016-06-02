@@ -1,3 +1,5 @@
+'use strict';
+
 const Q               = require('q');
 const Joi             = require('joi');
 const FindTodo        = require('./findTodo');

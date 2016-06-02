@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>todo app</title>
     <link href="../bower_components/Materialize/dist/css/materialize.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="styles/todo.css" rel="stylesheet">
+
 </head>
 <body ng-app="todoApp">
 <div ui-view="header">
@@ -18,11 +21,17 @@
 <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/Materialize/bin/materialize.js"></script>
+<script src="../bower_components/angular-resource/angular-resource.min.js"></script>
 <!-- bower dependencies -->
 
 <script src="app.js"></script>
 <script src="app.state.js"></script>
-<script src="home/home.state.js"></script>
+
+<script src="layout/header.controller.js"></script>
+<script src="sections/home/home.state.js"></script>
+<script src="sections/todo/todo.state.js"></script>
+<script src="sections/todo/todo.controller.js"></script>
+<script src="factory/todo.factory.js"></script>
 
 </body>
 </html>
