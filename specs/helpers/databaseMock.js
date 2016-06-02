@@ -6,11 +6,19 @@ module.exports = class DatabaseMock {
   }
   
   connect() {
+    if(mongoose.connection.db && mongoose.connection.readyState) {
+      return;
+    }
+    
     mongoose.connect(this.connectionUrl);
   }
   
   disconnect() {
     mongoose.disconnect();
+  }
+  
+  clearCollection(collection, cb) {
+    mongoose.connection.db.clearCollection(collection, cb);
   }
   
   clearDb(cb) {

@@ -42,13 +42,13 @@ describe('delete todo', () => {
       });
   });
   
-  it('should gracefully fail if non 24-byte todo_id is provided', () => {
-    const oId = new Array(23).fill("0").join('');
+  it('should gracefully fail if non 12-byte todo_id is provided', () => {
+    const oId = new Array(11).fill("0").join('');
     
     return new DeleteTodo(Todo)
       .delete(oId)
       .catch(err => {
-        err.message.should.contain('"todo._id" length must be 24 characters long');
+        err.message.should.contain('"todo._id" length must be 12 characters long');
       });
   });
   

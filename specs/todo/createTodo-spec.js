@@ -23,19 +23,19 @@ describe('create todo', () => {
     (() => new CreateTodo(Todo)).should.not.throw();
   });
   
-  it('should gracefully fail if required fields are not provided', () => {
-    return new CreateTodo(Todo)
-      .create({ })
-      .catch(err => {
-        err.message.should.contain('"todo.name" is required');
-      });
-  });
-  
   it('should gracefully fail if required fields are invalid', () => {
     return new CreateTodo(Todo)
       .create({ name: 5 })
       .catch(err => {
         err.message.should.contain('"todo.name" must be a string');
+      });
+  });
+  
+  it('should gracefully fail if required fields are not provided', () => {
+    return new CreateTodo(Todo)
+      .create({ })
+      .catch(err => {
+        err.message.should.contain('"todo.name" is required');
       });
   });
   
