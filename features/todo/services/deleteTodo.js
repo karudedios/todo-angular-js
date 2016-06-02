@@ -2,7 +2,7 @@ const Q   = require('q');
 const Joi = require('joi');
 const validateSchema  = require('../../../utils/validateSchema');
 
-const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(12)).required().label('todo._id');
+const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(24)).required().label('todo._id');
 
 module.exports = class DeleteTodo {
   constructor(Todo) {

@@ -3,7 +3,7 @@ const Joi             = require('joi');
 const validateSchema  = require('../../../utils/validateSchema');
 
 const predicateSchema = Joi.object().keys({
-  _id: Joi.alternatives(Joi.object(), Joi.string().length(12)).optional().label('todo._id'),
+  _id: Joi.alternatives(Joi.object(), Joi.string().length(24)).optional().label('todo._id'),
   name: Joi.string().optional().label('todo.name'),
   desc: Joi.string().optional().label('todo.desc'),
   color: Joi.string().regex(/#[a-f0-9]{6}/i).optional().label('todo.color')
