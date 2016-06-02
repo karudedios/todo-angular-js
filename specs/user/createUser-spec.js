@@ -73,6 +73,6 @@ describe('create user', () => {
         user._id.should.not.equal(undefined);
         user.username.should.equal(seed.username);
         user.password.should.equal(encryptedPassword);
-      })
+      });
   });
 });

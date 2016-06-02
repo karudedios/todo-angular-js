@@ -27,7 +27,7 @@ UserSchema.pre('save', function(next) {
   this.password = encryptPassword(this.password, this.salt);
   
   next();
-})
+});
 
 UserSchema.statics.encryptPassword = encryptPassword;
 
