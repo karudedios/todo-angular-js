@@ -1,10 +1,10 @@
 angular.module('todoApp')
-    .controller('TodoController', ['$scope', 'TodoService', TodoController]);
+    .controller('TodoController', ['$scope', 'Todo', TodoController]);
 
-function TodoController($scope, TodoService) {
+function TodoController($scope, Todo) {
     var self = this;
 
-    TodoService.findAll(function(todos){
+    var todos = Todo.query(function(){
        self.todos =  todos;
     });
 }
