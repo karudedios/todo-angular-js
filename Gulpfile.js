@@ -6,6 +6,7 @@ const _         = require('lodash');
 const env       = require('gulp-env');
 const mocha     = require('gulp-mocha');
 const rename    = require('gulp-rename');
+const plumber   = require('gulp-plumber');
 const transform = require('gulp-transform');
 
 const specSrc = path.join('.', 'specs', '**', '*-spec.js');
@@ -34,6 +35,7 @@ gulp.task('run:spec', ['make:config'], () => {
   const environment = env({ file: '.config-spec.json' });
   
   return gulp.src(specSrc)
+    .pipe(plumber())
     .pipe(environment)
     .pipe(mochaRunner)
     .pipe(environment.reset);
@@ -41,7 +43,7 @@ gulp.task('run:spec', ['make:config'], () => {
 
 gulp.task('watch:features', () => {
   const buildFeaturePath = _.partial(path.join.bind(path, '.', 'features', '**'), _, '*.js');
-  const specPath = path.join('.', 'specs', '**', '*.js');
+  const specPath = path.join('.', 'specs', '**', '*-spec.js');
   
   const modelPath     = buildFeaturePath('model');
   const servicesPath  = buildFeaturePath('services');
