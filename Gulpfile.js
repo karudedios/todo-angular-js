@@ -39,8 +39,14 @@ gulp.task('run:spec', ['make:config'], () => {
     .pipe(environment.reset);
 });
 
-gulp.task('watch:spec', () => {
-  return gulp.watch(specSrc, ['run:spec']);
+gulp.task('watch:features', () => {
+  const buildFeaturePath = _.partial(path.join.bind(path, '.', 'features', '**'), _, '*.js');
+  const specPath = path.join('.', 'specs', '**', '*.js');
+  
+  const modelPath     = buildFeaturePath('model');
+  const servicesPath  = buildFeaturePath('services');
+  
+  return gulp.watch([specPath, servicesPath, modelPath], ['run:spec']);
 });
     
 gulp.task('default', ['run:spec']);

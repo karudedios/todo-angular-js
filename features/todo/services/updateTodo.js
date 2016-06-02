@@ -3,7 +3,7 @@ const Joi             = require('joi');
 const FindTodo        = require('./findTodo');
 const validateSchema  = require('../../../utils/validateSchema');
 
-const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(12)).required().label('todo._id');
+const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(24)).required().label('todo._id');
 
 const todoSchema = Joi.object().keys({
   name: Joi.string().label('todo.name'),
