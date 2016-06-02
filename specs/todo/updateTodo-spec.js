@@ -43,12 +43,12 @@ describe('update todo', () => {
   });
   
   it('should fail gracefully if invalid todo_id is provided', () => {
-    const oid = new Array(11).fill("0").join('');
+    const oid = new Array(23).fill("0").join('');
     
     return new UpdateTodo(Todo)
       .update(oid, { })
       .catch(err => {
-        err.message.should.contain('"todo._id" length must be 12 characters long');
+        err.message.should.contain('"todo._id" length must be 24 characters long');
       });
   });
   
