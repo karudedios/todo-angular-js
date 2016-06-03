@@ -7,7 +7,7 @@ const Todo        = require('./features/todo/model/todo');
 const app         = express();
 const server      = http.createServer(app);
 
-mongoose.connect(process.env.MONGOOSE_CONNECTION_STR);
+mongoose.connect(process.env.MONGOOSE_CONNECTION_STR || 'mongodb://localhost:27017/todo');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

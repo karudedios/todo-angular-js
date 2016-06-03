@@ -1,0 +1,22 @@
+<ul class="collection with-header ">
+    <li class="collection-header center">
+        <h4><strong>TODO's List</strong></h4>
+        <input type="text" placeholder="Search" ng-model="findTodo">
+    </li>
+    <li class="collection-item" ng-repeat="todo in ctrl.todos | filter : findTodo">
+        <a><i class="material-icons waves-circle tiny padding-circle" style="background-color : {{todo.color}}; ">circle</i></a>
+        <strong> {{todo.name}}</strong>
+        <a href="" class="secondary-content padding-edit-button" ><i class="material-icons">edit</i></a>
+    </li>
+
+
+</ul>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue-grey">
+        <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating green "><i class="material-icons">add</i></a></li>
+    </ul>
+</div>

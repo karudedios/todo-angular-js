@@ -1,9 +1,12 @@
+'use strict';
+
 const Q               = require('q');
 const Joi             = require('joi');
 const FindTodo        = require('./findTodo');
 const validateSchema  = require('../../../utils/validateSchema');
+const objectIdSchema  = require('../../../utils/objectIdSchema');
 
-const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(24)).required().label('todo._id');
+const _idSchema = objectIdSchema.required().label('todo._id');
 
 const todoSchema = Joi.object().keys({
   name: Joi.string().label('todo.name'),
@@ -18,7 +21,7 @@ module.exports = class UpdateTodo {
   
   update(_id, todo) {
     return Q.when()
-      .then(validateSchema(objectIdSchema, _id))
+      .then(validateSchema(_idSchema, _id))
       .then(validateSchema(todoSchema, todo))
       .then(() => {
         return Q.ninvoke(this.Todo, 'update', { _id }, todo);

@@ -1,8 +1,10 @@
-const Q   = require('q');
-const Joi = require('joi');
-const validateSchema  = require('../../../utils/validateSchema');
+'use strict';
 
-const objectIdSchema = Joi.alternatives(Joi.object(), Joi.string().length(24)).required().label('todo._id');
+const Q   = require('q');
+const validateSchema  = require('../../../utils/validateSchema');
+const objectIdSchema  = require('../../../utils/objectIdSchema');
+
+const _idSchema = objectIdSchema.required().label('todo._id');
 
 module.exports = class DeleteTodo {
   constructor(Todo) {
@@ -11,7 +13,7 @@ module.exports = class DeleteTodo {
   
   delete(_id) {
     return Q.when()
-      .then(validateSchema(objectIdSchema, _id))
+      .then(validateSchema(_idSchema, _id))
       .then(() => {
         return Q.ninvoke(this.Todo, 'findOneAndRemove', { _id });
       });

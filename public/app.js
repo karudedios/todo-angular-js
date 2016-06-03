@@ -1,5 +1,6 @@
 
 angular.module('todoApp',
     [
-        'ui.router'
+        'ui.router',
+        'ngResource'
     ]);
