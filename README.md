@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/karudedios/todo-angular-js.png?label=ready&title=Ready)](https://waffle.io/karudedios/todo-angular-js)
 # todo-angular-js
 TODO App built using MEAN
 
