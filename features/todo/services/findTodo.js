@@ -4,7 +4,6 @@ const Q               = require('q');
 const Joi             = require('joi');
 const validateSchema  = require('../../../utils/validateSchema');
 const objectIdSchema  = require('../../../utils/objectIdSchema');
-const TodoDto         = require('../model/dto');
 
 const predicateSchema = Joi.object().keys({
   _id: objectIdSchema.optional().label('todo._id'),
@@ -23,8 +22,7 @@ module.exports = class FindTodo {
       .then(validateSchema(predicateSchema, predicate))
       .then(() => {
         return Q.ninvoke(this.Todo, 'findOne', predicate);
-      })
-      .then(TodoDto.new);
+      });
   }
   
   find(predicate) {
@@ -32,7 +30,6 @@ module.exports = class FindTodo {
       .then(validateSchema(predicateSchema, predicate))
       .then(() => {
         return Q.ninvoke(this.Todo, 'find', predicate);
-      })
-      .then(TodoDto.newList);
+      });
   }
 };

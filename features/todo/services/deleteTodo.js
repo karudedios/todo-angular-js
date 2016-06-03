@@ -1,7 +1,6 @@
 'use strict';
 
 const Q               = require('q');
-const TodoDto         = require('../model/dto');
 const validateSchema  = require('../../../utils/validateSchema');
 const objectIdSchema  = require('../../../utils/objectIdSchema');
 
@@ -17,7 +16,6 @@ module.exports = class DeleteTodo {
       .then(validateSchema(_idSchema, _id))
       .then(() => {
         return Q.ninvoke(this.Todo, 'findOneAndRemove', { _id });
-      })
-      .then(TodoDto.new);
+      });
   }
 };
