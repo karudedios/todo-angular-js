@@ -4,19 +4,26 @@
         <input type="text" placeholder="Search" ng-model="findTodo">
     </li>
     <li class="collection-item" ng-repeat="todo in ctrl.todos | filter : findTodo">
-        <a><i class="material-icons waves-circle tiny padding-circle" style="background-color : {{todo.color}}; ">circle</i></a>
+        <a><i class="material-icons waves-circle tiny padding-circle"
+              style="background-color : {{todo.color}}; ">circle</i></a>
         <strong> {{todo.name}}</strong>
-        <a href="" class="secondary-content padding-edit-button" ><i class="material-icons">edit</i></a>
+        <a href="" class="secondary-content padding-edit-button"><i class="material-icons">edit</i></a>
     </li>
-
-
 </ul>
+
+<my-todo-create-modal todo-modal-id="createModal"></my-todo-create-modal>
+
 
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large blue-grey">
         <i class="large material-icons">menu</i>
     </a>
     <ul>
-        <li><a class="btn-floating green "><i class="material-icons">add</i></a></li>
+        <li>
+            <my-todo-create-modal-btn todo-modal-id="createModal" classes="btn-floating green">
+                <i class="material-icons">add</i>
+            </my-todo-create-modal-btn>
+        </li>
+
     </ul>
 </div>
