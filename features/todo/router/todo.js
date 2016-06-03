@@ -1,8 +1,8 @@
-const Router              = require('express').Router;
-const FindTodo            = require('../services/findTodo');
-const CreateTodo          = require('../services/createTodo');
-const UpdateTodo          = require('../services/updateTodo');
-const DeleteTodo          = require('../services/deleteTodo');
+const Router            = require('express').Router;
+const FindTodo          = require('../services/findTodo');
+const CreateTodo        = require('../services/createTodo');
+const UpdateTodo        = require('../services/updateTodo');
+const DeleteTodo        = require('../services/deleteTodo');
 const PromisedResponse  = require('../../../utils/promisedResponse');
 
 module.exports = (Todo) =>
