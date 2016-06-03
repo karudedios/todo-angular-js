@@ -1,7 +1,8 @@
 'use strict';
 
-const Q   = require('q');
-const Joi = require('joi');
+const Q               = require('q');
+const Joi             = require('joi');
+const TodoDto         = require('../model/dto');
 const validateSchema  = require('../../../utils/validateSchema');
 
 const todoSchema = Joi.object().keys({
@@ -18,6 +19,7 @@ module.exports = class CreateTodo {
       .then(validateSchema(todoSchema, todo))
       .then(() => {
         return Q.ninvoke(this.Todo, 'create', todo);
-      });
+      })
+      .then(TodoDto.new);
   }
 };
