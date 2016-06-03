@@ -21,7 +21,6 @@ function myTodoCreateModalBtn(){
         templateUrl : 'sections/todo/directives/todo.create.modal.btn.html',
         controller : function($scope){
             $scope.openModal = function(){
-                console.log($scope.todoModalId)
                 $('#' + $scope.todoModalId).openModal();
             }
         }
