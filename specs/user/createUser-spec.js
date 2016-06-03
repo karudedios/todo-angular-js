@@ -68,11 +68,8 @@ describe('create user', () => {
     return new CreateUser(User)
       .create(seed)
       .then(user => {
-        const encryptedPassword = User.encryptPassword(seed.password, user.salt);
-        
         user._id.should.not.equal(undefined);
         user.username.should.equal(seed.username);
-        user.password.should.equal(encryptedPassword);
       });
   });
 });
