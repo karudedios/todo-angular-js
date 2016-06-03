@@ -1,6 +1,6 @@
 'use strict';
 
-const Q   = require('q');
+const Q               = require('q');
 const validateSchema  = require('../../../utils/validateSchema');
 const objectIdSchema  = require('../../../utils/objectIdSchema');
 

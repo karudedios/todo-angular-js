@@ -16,7 +16,7 @@ const TodoSchema = new Schema({
   color: {
     type: String,
     required: false,
-    default: '#FFFFFF',
+    default: '#607D8B',
     validate: {
       validator: function(input) {
         return /#[a-f0-9]{6}/i.test(input);

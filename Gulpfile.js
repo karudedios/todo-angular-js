@@ -36,7 +36,7 @@ gulp.task('make:config', () => {
 });
 
 gulp.task('run:spec', () => {
-  const mochaRunner = mocha({ reporter: 'nyan' });
+  const mochaRunner = mocha({ reporter: 'min' });
   const environment = env({ file: '.config-spec.json' });
   
   return gulp.src(specsPath)

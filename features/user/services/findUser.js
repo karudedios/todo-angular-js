@@ -1,5 +1,6 @@
 const Q               = require('q');
 const Joi             = require('joi');
+const UserDto         = require('../model/dto');
 const validateSchema  = require('../../../utils/validateSchema');
 const objectIdSchema  = require('../../../utils/objectIdSchema');
 
@@ -19,6 +20,7 @@ module.exports = class FindUser {
       .then(validateSchema(predicateSchema, predicate))
       .then(() => {
         return Q.ninvoke(this.User, 'findOne', predicate);
-      });
+      })
+      .then(UserDto.new);
   }
 };
