@@ -35,8 +35,8 @@ gulp.task('make:config', () => {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('run:spec', () => {
-  const mochaRunner = mocha({ reporter: 'nyan' });
+gulp.task('run:spec', ['make:config'], () => {
+  const mochaRunner = mocha({ reporter: 'min' });
   const environment = env({ file: '.config-spec.json' });
   
   return gulp.src(specsPath)
@@ -56,7 +56,7 @@ gulp.task('run:lint', () => {
     .pipe(environment.reset);
 });
 
-gulp.task('run', ['make:config', 'run:lint', 'run:spec']);
+gulp.task('run', ['run:lint', 'run:spec']);
 
 gulp.task('watch:features', () => {
   return gulp.watch([specsPath, servicesPath, modelPath], ['run']);
