@@ -9,7 +9,7 @@ const _idSchema = objectIdSchema.required().label('user._id');
 const userSchema = Joi.object().keys({
   username: Joi.string().optional().label('user.username'),
   password: Joi.string().optional().label('user.password'),
-}).required().label('user');
+}).required().min(1).label('user');
 
 module.exports = class UpdateUser {
   constructor(User) {
