@@ -1,8 +1,9 @@
 const http	      = require('http');
-const express	    = require('express');
-const mongoose 	  = require('mongoose');
+const express     = require('express');
+const mongoose    = require('mongoose');
 const bodyParser  = require('body-parser');
 const Todo        = require('./features/todo/model/todo');
+const User        = require('./features/user/model/user');
 
 const app         = express();
 const server      = http.createServer(app);
@@ -15,7 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
-app.use(require('./router.js')(Todo));
+const apiRouter = require('./router.js')(Todo, User);
+
+app.use(apiRouter);
 
 server.listen(process.env.PORT || '8080', process.env.IP || '0.0.0.0', () => {
   console.log("Server rocking");

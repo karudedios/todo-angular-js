@@ -1,7 +1,7 @@
 'use strict';
 
-const Q   = require('q');
-const Joi = require('joi');
+const Q               = require('q');
+const Joi             = require('joi');
 const validateSchema  = require('../../../utils/validateSchema');
 
 const todoSchema = Joi.object().keys({

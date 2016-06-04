@@ -6,9 +6,15 @@ const _         = require('lodash');
 const env       = require('gulp-env');
 const mocha     = require('gulp-mocha');
 const rename    = require('gulp-rename');
+const jshint    = require('gulp-jshint');
+const plumber   = require('gulp-plumber');
 const transform = require('gulp-transform');
 
-const specSrc = path.join('.', 'specs', '**', '*-spec.js');
+const buildFeaturePath = _.partial(path.join.bind(path, '.', 'features', '**'), _, '*.js');
+
+const modelPath     = buildFeaturePath('model');
+const servicesPath  = buildFeaturePath('services');
+const specsPath = path.join('.', 'specs', '**', '*-spec.js');
 
 gulp.task('make:config', () => {
   return gulp.src('./configs/.*')
@@ -29,24 +35,31 @@ gulp.task('make:config', () => {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('run:spec', ['make:config'], () => {
-  const mochaRunner = mocha({ reporter: 'nyan' });
+gulp.task('run:spec', () => {
+  const mochaRunner = mocha({ reporter: 'min' });
   const environment = env({ file: '.config-spec.json' });
   
-  return gulp.src(specSrc)
+  return gulp.src(specsPath)
+    .pipe(plumber())
     .pipe(environment)
     .pipe(mochaRunner)
     .pipe(environment.reset);
 });
 
-gulp.task('watch:features', () => {
-  const buildFeaturePath = _.partial(path.join.bind(path, '.', 'features', '**'), _, '*.js');
-  const specPath = path.join('.', 'specs', '**', '*.js');
+gulp.task('run:lint', () => {
+  const environment = env({ file: '.config-spec.json' });
   
-  const modelPath     = buildFeaturePath('model');
-  const servicesPath  = buildFeaturePath('services');
-  
-  return gulp.watch([specPath, servicesPath, modelPath], ['run:spec']);
+  return gulp.src([specsPath, modelPath, servicesPath])
+    .pipe(environment)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(environment.reset);
 });
-    
-gulp.task('default', ['run:spec']);
+
+gulp.task('run', ['make:config', 'run:lint', 'run:spec']);
+
+gulp.task('watch:features', () => {
+  return gulp.watch([specsPath, servicesPath, modelPath], ['run']);
+});
+
+gulp.task('default', ['run']);
