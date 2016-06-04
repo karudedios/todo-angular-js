@@ -4,8 +4,14 @@ angular.module('todoApp')
 function TodoController($scope, Todo) {
     var self = this;
 
-    var todos = Todo.query(function(){
-       self.todos =  todos;
-    });
+    self.refreshList = refreshList;
+
+    refreshList();
+
+    function refreshList(){
+        var todos = Todo.query(function(){
+            self.todos =  todos;
+        });
+    }
 }
 
