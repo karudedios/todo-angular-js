@@ -3,7 +3,8 @@
   "description": "TODO App built using MEAN",
   "main": "server.js",
   "authors": [
-    "Carlos de Dios <c.dedios@outlook.com>"
+    "Carlos de Dios <c.dedios@outlook.com>",
+    "Kenji Mukai <kensuka21@gmail.com>"
   ],
   "license": "MIT",
   "keywords": [
