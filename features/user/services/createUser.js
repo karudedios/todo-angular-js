@@ -1,6 +1,5 @@
 const Q               = require('q');
 const Joi             = require('joi');
-const UserDto         = require('../model/dto');
 const validateSchema  = require('../../../utils/validateSchema');
 
 const userSchema = Joi.object().keys({
@@ -18,7 +17,6 @@ module.exports = class CreateUser {
       .then(validateSchema(userSchema, user))
       .then(() => {
         return Q.ninvoke(this.User, 'create', user);
-      })
-      .then(UserDto.new);
+      });
   }
 };
