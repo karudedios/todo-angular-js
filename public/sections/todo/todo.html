@@ -4,14 +4,14 @@
         <input type="text" placeholder="Search" ng-model="findTodo">
     </li>
     <li class="collection-item" ng-repeat="todo in ctrl.todos | filter : findTodo">
-        <a href="" style="background-color : {{todo.color}}; " class="material-icons tiny btn-floating"></a>
+        <a href="javascript:void(0);" style="background-color : {{todo.color}}; " class="material-icons tiny btn-floating"></a>
         <strong> {{todo.name}}</strong>
-        <a href="" class="secondary-content padding-edit-button"><i class="material-icons">edit</i></a>
+        <a href="javascript:void(0);" class="secondary-content padding-edit-button"><i class="material-icons">edit</i></a>
     </li>
 </ul>
 
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large blue-grey">
+    <a href="javascript:void(0);" class="btn-floating btn-large blue-grey">
         <i class="large material-icons">menu</i>
     </a>
     <ul>

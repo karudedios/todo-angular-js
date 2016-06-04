@@ -51,11 +51,11 @@ function myTodoCreateModalController($scope, Todo){
     function create(){
         console.log($scope.todo)
         Todo.save($scope.todo, function(data){
-            console.log(data);
             $scope.onSuccess(data);
             refreshTodo();
+            Materialize.toast('The Task was created succesful !', 4000)
         }, function(err){
-            console.log(err);
+            Materialize.toast('There was an Error: ' + err, 4000);
         });
     }
 
