@@ -51,7 +51,9 @@ function myTodoCreateModalController($scope, Todo){
     function create(){
         console.log($scope.todo)
         Todo.save($scope.todo, function(data){
-            $scope.onSuccess(data);
+            if($scope.onSuccess){
+                $scope.onSuccess(data);
+            }
             refreshTodo();
             Materialize.toast('The Task was created succesful !', 4000)
         }, function(err){

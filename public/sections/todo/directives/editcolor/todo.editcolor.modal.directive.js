@@ -5,7 +5,8 @@ function myTodoEditColorModal() {
     return {
         scope : {
             editModalId : '@',
-            myTodo : '='
+            myTodo : '=',
+            onSuccess : '&'
         },
         templateUrl : 'sections/todo/directives/editcolor/todo.editcolor.modal.html',
         controller : ['$scope', 'Todo', 'Colors', myTodoEditColorModaController]
@@ -17,9 +18,17 @@ function myTodoEditColorModaController($scope, Todo, Colors){
     $scope.editColor = editColor;
     
     function editColor(color){
-        var todo = $scope.myTodo;
-        todo.color = color.colorCode;
+        Todo.update({_id : $scope.myTodo._id, color : color.colorCode}, function(doc){
+            if($scope.onSuccess){
+                $scope.onSuccess(doc);
+            }
+            Materialize.toast('The Color was Updated for Task: ' + doc.name, 4000)
+            closeModal();
+        });
 
-        Todo.update(todo);
+    }
+
+    function closeModal(){
+        $('#' + $scope.editModalId).closeModal();
     }
 }

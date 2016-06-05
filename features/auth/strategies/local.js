@@ -1,3 +1,4 @@
+'use strict';
 const Strategy    = require('passport-local');
 const UserDto     = require('../../user/model/dto');
 const FindUser    = require('../../user/services/findUser');
