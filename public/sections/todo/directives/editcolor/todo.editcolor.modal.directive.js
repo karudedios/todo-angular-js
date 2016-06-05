@@ -4,7 +4,7 @@ angular.module('todoApp')
 function myTodoEditColorModal() {
     return {
         scope : {
-            editModalId : '@',
+            editColorModalId : '@',
             myTodo : '=',
             onSuccess : '&'
         },
@@ -29,6 +29,6 @@ function myTodoEditColorModaController($scope, Todo, Colors){
     }
 
     function closeModal(){
-        $('#' + $scope.editModalId).closeModal();
+        $('#' + $scope.editColorModalId).closeModal();
     }
 }
