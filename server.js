@@ -1,18 +1,22 @@
-const http	      = require('http');
-const express     = require('express');
-const mongoose    = require('mongoose');
-const passport    = require('passport');
-const bodyParser  = require('body-parser');
-const session     = require('express-session');
-const Todo        = require('./features/todo/model/todo');
-const User        = require('./features/user/model/user');
+const http                        = require('http');
+const express                     = require('express');
+const mongoose                    = require('mongoose');
+const passport                    = require('passport');
+const bodyParser                  = require('body-parser');
+const session                     = require('express-session');
+const Todo                        = require('./features/todo/model/todo');
+const User                        = require('./features/user/model/user');
+const LocalAuthenticationStrategy = require('./features/auth/strategies/local');
 
 const app         = express();
 const server      = http.createServer(app);
 
 mongoose.connect(process.env.MONGOOSE_CONNECTION_STR || 'mongodb://localhost:27017/todo');
 
-const apiRouter = require('./router.js')(Todo, User, passport);
+const strategy = new LocalAuthenticationStrategy(User, passport);
+
+const apiRouter = require('./routers/api')(Todo, User);
+const authRouter = require('./routers/auth')(User, strategy);
 
 const urlEncodedSettings = { extended: true };
 
@@ -26,6 +30,7 @@ app
   .use(passport.session())
   .use(express.static(__dirname + '/public'))
   .use('/bower_components',  express.static(__dirname + '/bower_components'))
+  .use(authRouter)
   .use(apiRouter);
 
 const port  = process.env.PORT || '8080';

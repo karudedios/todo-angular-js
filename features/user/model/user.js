@@ -8,14 +8,15 @@ const encryptPassword = (pass, salt) => crypto.pbkdf2Sync(pass, salt, 10000, 512
 const UserSchema = new Schema({
   username: {
     type: String,
-    required: true
+    unique: true,
+    required: true,
   },
-  
+
   password: {
     type: String,
     required: true
   },
-  
+
   salt: {
     type: String,
     default: ''
@@ -25,7 +26,7 @@ const UserSchema = new Schema({
 UserSchema.pre('save', function(next) {
   this.salt = crypto.randomBytes(128).toString('base64');
   this.password = encryptPassword(this.password, this.salt);
-  
+
   next();
 });
 
