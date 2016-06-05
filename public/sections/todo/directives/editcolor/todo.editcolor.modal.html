@@ -1,0 +1,15 @@
+<div id="{{editColorModalId}}" class="modal modal-editcolor">
+    <div class="modal-content">
+        <ul class="collection with-header ">
+            <li class="collection-header center-align"><h5><strong>Select a Color</strong></h5></li>
+            <li class="collection-item" ng-repeat="color in colors | filter : findTodo">
+                <a href="javascript:void(0);"  style="background-color : {{color.colorCode}}; " class="material-icons tiny btn-floating"></a>
+                <strong> {{color.name}}</strong>
+                <a href="javascript:void(0);" ng-click="editColor(color);"
+                   class="secondary-content padding-edit-button">
+                    <i class="material-icons">send</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

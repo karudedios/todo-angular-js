@@ -8,7 +8,7 @@ function myTodoCreateModal(){
             todoModalId : '@',
             onSuccess : '&'
         },
-        templateUrl : 'sections/todo/directives/todo.create.modal.html',
+        templateUrl : 'sections/todo/directives/create/todo.create.modal.html',
         controller : ['$scope', 'Todo', myTodoCreateModalController]
     }
 }
@@ -20,7 +20,7 @@ function myTodoCreateModalBtn(){
             classes : '@?'
         },
         transclude : true,
-        templateUrl : 'sections/todo/directives/todo.create.modal.btn.html',
+        templateUrl : 'sections/todo/directives/create/todo.create.modal.btn.html',
         controller : ['$scope', myTodoCreateModalBtnController]
     }
 }
@@ -51,7 +51,9 @@ function myTodoCreateModalController($scope, Todo){
     function create(){
         console.log($scope.todo)
         Todo.save($scope.todo, function(data){
-            $scope.onSuccess(data);
+            if($scope.onSuccess){
+                $scope.onSuccess(data);
+            }
             refreshTodo();
             Materialize.toast('The Task was created succesful !', 4000)
         }, function(err){
