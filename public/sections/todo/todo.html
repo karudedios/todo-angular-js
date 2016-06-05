@@ -1,22 +1,29 @@
 <ul class="collection with-header ">
-    <li class="collection-header center">
+    <li class="collection-header center row">
         <h4><strong>TODO's List</strong></h4>
-        <input type="text" placeholder="Search" ng-model="findTodo">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">search</i>
+            <input type="text" placeholder="Search" ng-model="findTodo">
+        </div>
     </li>
     <li class="collection-item" ng-repeat="todo in ctrl.todos | filter : findTodo">
-        <a><i class="material-icons waves-circle tiny padding-circle" style="background-color : {{todo.color}}; ">circle</i></a>
+        <a href="javascript:void(0);" style="background-color : {{todo.color}}; " class="material-icons tiny btn-floating"></a>
         <strong> {{todo.name}}</strong>
-        <a href="" class="secondary-content padding-edit-button" ><i class="material-icons">edit</i></a>
+        <a href="javascript:void(0);" class="secondary-content padding-edit-button"><i class="material-icons">edit</i></a>
     </li>
-
-
 </ul>
 
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large blue-grey">
+    <a href="javascript:void(0);" class="btn-floating btn-large blue-grey">
         <i class="large material-icons">menu</i>
     </a>
     <ul>
-        <li><a class="btn-floating green "><i class="material-icons">add</i></a></li>
+        <li>
+            <my-todo-create-modal-btn todo-modal-id="createModal" classes="btn-floating green">
+                <i class="material-icons">add</i>
+            </my-todo-create-modal-btn>
+        </li>
     </ul>
 </div>
+
+<my-todo-create-modal todo-modal-id="createModal" on-success="ctrl.refreshList()"></my-todo-create-modal>
