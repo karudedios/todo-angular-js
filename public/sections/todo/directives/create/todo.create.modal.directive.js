@@ -8,7 +8,7 @@ function myTodoCreateModal(){
             todoModalId : '@',
             onSuccess : '&'
         },
-        templateUrl : 'sections/todo/directives/todo.create.modal.html',
+        templateUrl : 'sections/todo/directives/create/todo.create.modal.html',
         controller : ['$scope', 'Todo', myTodoCreateModalController]
     }
 }
@@ -20,7 +20,7 @@ function myTodoCreateModalBtn(){
             classes : '@?'
         },
         transclude : true,
-        templateUrl : 'sections/todo/directives/todo.create.modal.btn.html',
+        templateUrl : 'sections/todo/directives/create/todo.create.modal.btn.html',
         controller : ['$scope', myTodoCreateModalBtnController]
     }
 }
