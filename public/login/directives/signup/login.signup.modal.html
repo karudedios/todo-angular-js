@@ -1,0 +1,42 @@
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light modal-trigger" ng-click="openModal()" href="javascript:void(0);">Register Now</a>
+
+<!-- Modal Structure -->
+<div id="signUpModal" class="modal ">
+    <form class="col s12" name="signUpForm" ng-submit="signUpUser()">
+
+        <div class="modal-content container">
+            <h4 class="center-align"><b>Sign Up</b></h4>
+            <p>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" class="validate" ng-model="user.username">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" name="password" class="validate" ng-model="user.password">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="confirmation" type="password" class="validate"
+                               ng-model="user.confirmation" my-confirm-password name="confirmation">
+                        <label for="confirmation">Confirm Password</label>
+                    </div>
+                </div>
+            </div>
+
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button href="#!" ng-show="signUpForm.confirmation.$error.noMatch && signUpForm.confirmation.$dirty" class=" modal-action modal-close waves-effect waves-green btn-flat">
+                Agree
+            </button>
+        </div>
+    </form>
+
+</div>
