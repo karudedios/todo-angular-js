@@ -17,7 +17,7 @@
                 <div class="input-field col s11">
                     <i class="material-icons prefix">assignment</i>
                     <textarea id="icon_prefix2" class="materialize-textarea" length="120"
-                              ng-model="myTodo.desc"></textarea>
+                              ng-model="myTodo.desc" ng-maxlength="120" name="todoDesc"></textarea>
                     <label for="icon_prefix2">Summary</label>
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <button type="reset" class="right modal-action modal-close waves-effect waves-green btn-flat">Cancel
             </button>
             <button class="right modal-action modal-close waves-effect waves-green btn-flat"
-                    ng-show="todoForm.todoName.$valid">Save
+                    ng-show="todoForm.$valid">Save
             </button>
         </div>
     </form>
