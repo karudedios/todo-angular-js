@@ -1,0 +1,34 @@
+<div id="{{detailModalId}}" class="modal">
+    <form name="todoForm" ng-submit="editTodo()">
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s8">
+                    <i class="material-icons prefix">note_add</i>
+                    <input id="icon_prefix" type="text" class="validate" name="todoName" required ng-model="myTodo.name"
+                           autofocus>
+                    <label for="icon_prefix">Task</label>
+                </div>
+                <div input-field class="col s3">
+                    <select ng-model="myTodo.color" material-select watch>
+                        <option ng-repeat="color in colors" value="{{color.colorCode}}" data-icon="{{color.locationFile}}" class="circle" ng-selected="refreshSelectStyle($index)">{{color.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s11">
+                    <i class="material-icons prefix">assignment</i>
+                    <textarea id="icon_prefix2" class="materialize-textarea" length="120"
+                              ng-model="myTodo.desc"></textarea>
+                    <label for="icon_prefix2">Summary</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="right modal-action modal-close waves-effect waves-green btn-flat">Cancel
+            </button>
+            <button class="right modal-action modal-close waves-effect waves-green btn-flat"
+                    ng-show="todoForm.todoName.$valid">Save
+            </button>
+        </div>
+    </form>
+</div>
