@@ -8,10 +8,9 @@
                            autofocus>
                     <label for="icon_prefix">Task</label>
                 </div>
-                <div input-field class="col s3">
-                    <select ng-model="myTodo.color" material-select watch>
-                        <option ng-repeat="color in colors" value="{{color.colorCode}}" data-icon="{{color.locationFile}}" class="circle" ng-selected="refreshSelectStyle($index)">{{color.name}}</option>
-                    </select>
+                <div class="input-field col s3">
+                    <input id="colorpickerField1" type="text" class="validate" name="todoColor" required ng-model="myTodo.color">
+                    <label for="colorpickerField1">Color</label>
                 </div>
             </div>
             <div class="row">

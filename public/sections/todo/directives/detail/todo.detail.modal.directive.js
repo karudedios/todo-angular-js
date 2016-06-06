@@ -9,18 +9,16 @@ function myTodoDetailModal() {
             onSuccess: '&'
         },
         templateUrl: 'sections/todo/directives/detail/todo.detail.modal.html',
-        controller: ['$scope', 'Todo', 'Colors', myTodoDetailModalController]
+        controller: ['$scope', 'Todo', myTodoDetailModalController]
     }
 }
 
-function myTodoDetailModalController($scope, Todo, Colors) {
+function myTodoDetailModalController($scope, Todo) {
     angular.element(document).ready(function () {
         initMaterializeDesign();
     });
 
-    $scope.refreshSelectStyle = refreshSelectStyle;
     $scope.editTodo = editTodo;
-    $scope.colors = Colors;
 
     $scope.$watch('myTodoId', function () {
         if ($scope.myTodoId) {
@@ -29,12 +27,6 @@ function myTodoDetailModalController($scope, Todo, Colors) {
             });
         }
     });
-
-    function refreshSelectStyle($index) {
-        if (++$index == $scope.colors.length) {
-            $('select').material_select();
-        }
-    }
 
     function editTodo(){
         var todo = {
@@ -56,7 +48,9 @@ function myTodoDetailModalController($scope, Todo, Colors) {
 
     function initMaterializeDesign() {
         $('textarea#icon_prefix2').characterCounter();
-        $('select').material_select();
+        $('#colorpickerField1').colorpicker().on('changeColor.colorpicker', function(event){
+            $scope.myTodo.color = event.color.toHex();
+        });
     }
 }
 
