@@ -11,7 +11,7 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" type="text" class="validate" ng-model="user.username">
+                        <input id="username" type="text" class="validate" ng-model="user.username" required>
                         <label for="username">Username</label>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="modal-footer">
-                <button href="#!" ng-show="!signUpForm.confirm_password.$error.passwordVerify && !signUpForm.confirm_password.$invalid"
+                <button href="#!" ng-show="!signUpForm.confirm_password.$error.passwordVerify && !signUpForm.$invalid"
                         type="submit" class=" modal-action modal-close waves-effect waves-green btn">
                     Save
                 </button>
