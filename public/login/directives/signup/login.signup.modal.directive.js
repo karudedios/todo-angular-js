@@ -3,35 +3,41 @@ angular.module('todoApp')
 
 function myLoginSignupModal() {
     return {
+        scope :{
+
+        },
         templateUrl : 'login/directives/signup/login.signup.modal.html',
-        controller: ['$scope', 'User', myLoginSignupModalController]
+        controller: ['$scope', 'Auth', myLoginSignupModalController]
     }
 }
 
-function myLoginSignupModalController($scope, User) {
+function myLoginSignupModalController($scope, Auth) {
     $scope.openModal = openModal;
     $scope.signUpUser = signUpUser;
-    $scope.invalidPasswords = false;
 
-    $scope.user = {
-        username: '',
-        password: '',
-        confirmation: ''
-    };
-    
-    $scope.isValidPassword = isValidPassword; 
+    initNewUser();
 
     function signUpUser() {
-        
+        Auth.signup({username : $scope.user.username, password : $scope.user.password}, function(doc){
+            console.log(doc)
+        }, function(err){
+            if(err.data){
+                Materialize.toast(err.data, 3000);
+            }
+        });
+
+        initNewUser();
     }
 
-    function isValidPassword() {
-        return $scope.user.password === $scope.user.confirmation;  
-    }
-    
     function openModal() {
         $('#signUpModal').openModal();
     }
 
-
+    function initNewUser(){
+        $scope.user = {
+            username: '',
+            password: '',
+            confirmation: ''
+        };
+    }
 }

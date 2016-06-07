@@ -1,14 +1,23 @@
 angular.module('todoApp')
-    .directive('myConfirmPassword', myConfirmPassword);
+    .directive('passwordVerify', passwordVerify);
 
-function myConfirmPassword() {
-    return{
-        require:'ngModel',
-        link: function(scope, elem, attrs, ctrl){
-            ctrl.$parsers.unshift(function (viewValue, $scope) {
-                var noMatch = viewValue != scope.user.password.$viewValue
-                ctrl.$setValidity('noMatch', noMatch);
-            })
+function passwordVerify() {
+    return {
+        require: "ngModel",
+        scope: {
+            passwordVerify: '='
+        },
+        link: function (scope, element, attrs, ctrl) {
+            ctrl.$parsers.unshift(function (viewValue) {
+                var origin = scope.passwordVerify;
+                if (origin != viewValue) {
+                    ctrl.$setValidity("passwordVerify", false);
+                    return undefined;
+                } else {
+                    ctrl.$setValidity("passwordVerify", true);
+                    return viewValue;
+                }
+            });
         }
-    }
+    };
 }
