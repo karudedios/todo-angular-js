@@ -9,6 +9,7 @@ const objectIdSchema  = require('../../../utils/objectIdSchema');
 const _idSchema = objectIdSchema.required().label('todo._id');
 
 const todoSchema = Joi.object().keys({
+  _id: Joi.string().label('todo._id'),
   name: Joi.string().label('todo.name'),
   desc: Joi.string().label('todo.desc'),
   color: Joi.string().regex(/#[a-f0-9]{6}/i).label('todo.color')

@@ -7,7 +7,7 @@
         </div>
     </li>
     <li class="collection-item" ng-repeat="todo in ctrl.todos | filter : findTodo">
-        <a href="javascript:void(0);" style="background-color : {{todo.color}}; " class="material-icons tiny btn-floating"></a>
+        <a href="javascript:void(0);" ng-click="ctrl.openEditModal(todo);" style="background-color : {{todo.color}}; " class="material-icons tiny btn-floating"></a>
         <strong> {{todo.name}}</strong>
         <a href="javascript:void(0);" class="secondary-content padding-edit-button"><i class="material-icons">edit</i></a>
     </li>
@@ -27,3 +27,4 @@
 </div>
 
 <my-todo-create-modal todo-modal-id="createModal" on-success="ctrl.refreshList()"></my-todo-create-modal>
+<my-todo-edit-color-modal edit-color-modal-id="editModal" my-todo="todoToEditColor" on-success="ctrl.refreshList()"></my-todo-edit-color-modal>
