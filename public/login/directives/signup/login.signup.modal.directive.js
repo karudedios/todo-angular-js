@@ -7,11 +7,11 @@ function myLoginSignupModal() {
 
         },
         templateUrl : 'login/directives/signup/login.signup.modal.html',
-        controller: ['$scope', 'Auth', myLoginSignupModalController]
+        controller: ['$scope', '$state', 'Auth', myLoginSignupModalController]
     }
 }
 
-function myLoginSignupModalController($scope, Auth) {
+function myLoginSignupModalController($scope, $state, Auth) {
     $scope.openModal = openModal;
     $scope.signUpUser = signUpUser;
 
@@ -19,10 +19,12 @@ function myLoginSignupModalController($scope, Auth) {
 
     function signUpUser() {
         Auth.signup({username : $scope.user.username, password : $scope.user.password}, function(doc){
-            console.log(doc)
+            if(doc.username){
+                $state.go('app.home');
+            }
         }, function(err){
             if(err.data){
-                Materialize.toast(err.data, 3000);
+                Materialize.toast(err.data, 4000);
             }
         });
 
