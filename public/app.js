@@ -2,5 +2,6 @@
 angular.module('todoApp',
     [
         'ui.router',
-        'ngResource'
+        'ngResource',
+        'ui.materialize'
     ]);
