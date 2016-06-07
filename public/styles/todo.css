@@ -5,3 +5,10 @@
 .padding-edit-button{
     padding-top: 5px;
 }
+
+.modal-editcolor-content{
+    height: 200px
+}
+.modal-editcolor{
+    width: 300px
+}
