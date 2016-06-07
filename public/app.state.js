@@ -8,7 +8,7 @@ function AppStateConfig($stateProvider, $urlRouterProvider){
         views : {
             'header' : {
                 templateUrl : 'layout/header.html',
-                controller : 'HeaderController'
+                controller : 'HeaderController as ctrl'
             },
             'content' : {
                 template : '<div class="container" ui-view></div>'
@@ -18,7 +18,8 @@ function AppStateConfig($stateProvider, $urlRouterProvider){
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         var $state = $injector.get('$state');
-
         $state.go('app.home');
     });
+
+
 }

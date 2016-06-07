@@ -34,10 +34,7 @@ function myTodoCreateModalBtnController($scope){
 }
 
 function myTodoCreateModalController($scope, Todo){
-    angular.element(document).ready(function () {
-        initMaterializeDesign()
-    });
-
+    
     $scope.create = create;
 
     $scope.todo = {
@@ -61,9 +58,4 @@ function myTodoCreateModalController($scope, Todo){
         });
     }
 
-}
-
-function initMaterializeDesign(){
-    $('textarea#icon_prefix2').characterCounter();
-    $('select').material_select();
 }

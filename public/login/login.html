@@ -1,0 +1,42 @@
+<div id="login-page" class="row container" >
+    <div class="col s12 z-depth-6 card-panel">
+        <form class="login-form" ng-submit="ctrl.signin()">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <h3 class="center login-form-text"><b>Login</b></h3>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class=" mdi-social-person-outline prefix material-icons">person_pin</i>
+
+                    <input class="validate" id="username" type="text" ng-model="ctrl.user.username">
+                    <label for="username" data-error="wrong" data-success="right">Username</label>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class=" mdi-social-person-outline prefix material-icons">lock_outline</i>
+
+                    <input id="password" type="password" ng-model="ctrl.user.password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
+                </div>
+            </div>
+
+        </form>
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <span>Don't you have an Account?</span>
+                <p class="margin medium-small">
+                    <my-login-signup-modal></my-login-signup-modal>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

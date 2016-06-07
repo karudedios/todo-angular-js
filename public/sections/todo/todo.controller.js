@@ -2,10 +2,13 @@ angular.module('todoApp')
     .controller('TodoController', ['$scope', 'Todo', TodoController]);
 
 function TodoController($scope, Todo) {
+
+
     var self = this;
 
     self.refreshList = refreshList;
     self.openEditModal = openEditModal;
+    self.openDetailModal = openDetailModal;
 
     refreshList();
 
@@ -17,7 +20,16 @@ function TodoController($scope, Todo) {
 
     function openEditModal(todo){
         $('#editModal').openModal();
-        $scope.todoToEditColor = todo;
+        self.todoToEditColor = todo;
     }
+    
+    function openDetailModal(todo){
+        $('#detailModal').openModal();
+        self.todoToDetailId = todo._id;
+    }
+
+    
 }
+
+
 
