@@ -27,7 +27,7 @@ function myTodoEditColorModaController($scope, Todo){
             }
             Materialize.toast('The Color was Updated for Task: ' + doc.name, 4000)
             closeModal();
-        });
+        }, handleError);
     }
 
     function closeModal(){

@@ -10,6 +10,7 @@
         <a href="javascript:void(0);" style="background-color : {{todo.color}}; " class="material-icons tiny btn-floating" ng-click="ctrl.openEditModal(todo);"></a>
         <strong> {{todo.name}}</strong>
         <a href="javascript:void(0);" class="secondary-content padding-edit-button" ng-click="ctrl.openDetailModal(todo);"><i class="material-icons">edit</i></a>
+        <a href="javascript:void(0);" class="secondary-content padding-edit-button" ng-click="ctrl.deleteTodo(todo);"><i class="material-icons">delete</i></a>
     </li>
 </ul>
 

@@ -9,6 +9,7 @@ function TodoController($scope, Todo) {
     self.refreshList = refreshList;
     self.openEditModal = openEditModal;
     self.openDetailModal = openDetailModal;
+    self.deleteTodo = deleteTodo;
 
     refreshList();
 
@@ -28,6 +29,12 @@ function TodoController($scope, Todo) {
         self.todoToDetailId = todo._id;
     }
 
+    function deleteTodo(todo) {
+        Todo.delete({id : todo._id}, function(){
+            Materialize.toast('Task deleted', 4000);
+            refreshList();
+        }, handleError);
+    }
     
 }
 

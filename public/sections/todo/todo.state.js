@@ -8,7 +8,6 @@ function TodoStateConfig($stateProvider) {
             parent : 'app',
             templateUrl : 'sections/todo/todo.html',
             controller : 'TodoController as ctrl'
-
         });
 
 }
