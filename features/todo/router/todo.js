@@ -1,3 +1,4 @@
+const _                 = require('lodash');
 const TodoDto           = require('../model/dto');
 const Router            = require('express').Router;
 const FindTodo          = require('../services/findTodo');
@@ -6,29 +7,29 @@ const UpdateTodo        = require('../services/updateTodo');
 const DeleteTodo        = require('../services/deleteTodo');
 const PromisedResponse  = require('../../../utils/promisedResponse');
 
-module.exports = (Todo) =>
+module.exports = (Todo, strategy) =>
   new Router()
-    .get('/', PromisedResponse(() =>
+    .get('/', strategy.authenticated, PromisedResponse((req) =>
       new FindTodo(Todo)
-        .find({ })
+        .find({ owner: req.user._id })
         .then(TodoDto.newList)))
-      
-    .get('/:id', PromisedResponse(req =>
+
+    .get('/:id', strategy.authenticated, PromisedResponse(req =>
       new FindTodo(Todo)
-        .findOne({ _id: req.params.id })
+        .findOne({ _id: req.params.id, owner: req.user._id })
         .then(TodoDto.new)))
-      
-    .put('/:id', PromisedResponse(req =>
+
+    .put('/:id', strategy.authenticated, PromisedResponse(req =>
       new UpdateTodo(Todo)
         .update(req.params.id, req.body)
         .then(TodoDto.new)))
-      
-    .post('/', PromisedResponse(req =>
+
+    .post('/', strategy.authenticated, PromisedResponse(req =>
       new CreateTodo(Todo)
-        .create(req.body)
+        .create(_.assign({ owner: req.user._id }, req.body))
         .then(TodoDto.new)))
-      
-    .delete('/:id', PromisedResponse(req =>
+
+    .delete('/:id', strategy.authenticated, PromisedResponse(req =>
       new DeleteTodo(Todo)
         .delete(req.params.id)
         .then(TodoDto.new)));

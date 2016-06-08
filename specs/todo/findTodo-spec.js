@@ -9,37 +9,37 @@ describe('find todo', () => {
   let firstTodo = {};
   let secondTodo = {};
   let should;
-  
+
   const db = new DatabaseMock();
-  
+
   before((done) => {
     should = chai.should();
     db.connect();
-    
+
     const createTodo =new CreateTodo(Todo);
-    
-    createTodo.create({ name: 'first!' })
+
+    createTodo.create({ name: 'first!', owner: new Array(24).fill(0).join('') })
       .then(newTodo => {
-        return createTodo.create({ name: 'second!' })
+        return createTodo.create({ name: 'second!', owner: new Array(24).fill(0).join('') })
           .then(newerTodo => {
             _todos = [firstTodo, secondTodo] = [newTodo, newerTodo];
             done();
           });
       });
   });
-  
+
   after((done) => {
     db.clearDb(function() {
       db.disconnect();
       done();
     });
   });
-  
+
   it('should ask for the dependencies it needs', () => {
     FindTodo.length.should.equal(1);
     (() => new FindTodo(Todo)).should.not.throw();
   });
-  
+
   describe('findOne', () => {
     it('should gracefully fail if invalid predicate is provided', () => {
       return new FindTodo(Todo)
@@ -48,7 +48,7 @@ describe('find todo', () => {
           err.message.should.contain('"predicate" is required');
         });
     });
-    
+
     it('should retrieve first todo if empty predicate is provided', () => {
       return new FindTodo(Todo)
         .findOne({ })
@@ -56,7 +56,7 @@ describe('find todo', () => {
           String(todo._id).should.equal(String(firstTodo._id));
         });
     });
-    
+
     it('should retrieve first todo that matches a given predicate', () => {
       return new FindTodo(Todo)
         .findOne({ name: secondTodo.name })
@@ -64,7 +64,7 @@ describe('find todo', () => {
           String(todo._id).should.equal(String(secondTodo._id));
         });
     });
-    
+
     it('should return null if nothing was found', () => {
       return new FindTodo(Todo)
         .findOne({ name: 'nope' })
@@ -73,7 +73,7 @@ describe('find todo', () => {
         });
     });
   });
-  
+
   describe('find', () => {
     it('should gracefully fail if invalid predicate is provided', () => {
       return new FindTodo(Todo)
@@ -82,7 +82,7 @@ describe('find todo', () => {
           err.message.should.contain('"predicate" is required');
         });
     });
-    
+
     it('should retrieve all todos if empty predicate is provided', () => {
       return new FindTodo(Todo)
         .find({ })
@@ -90,7 +90,7 @@ describe('find todo', () => {
           todos.length.should.equal(_todos.length);
         });
     });
-    
+
     it('should retrieve all todos matching a given predicate', () => {
       return new FindTodo(Todo)
         .find({ name: firstTodo.name })
@@ -98,7 +98,7 @@ describe('find todo', () => {
           todos.length.should.equal(1);
         });
     });
-    
+
     it('should return an empty object if nothing was found', () => {
       return new FindTodo(Todo)
         .find({ name: 'nope' })
