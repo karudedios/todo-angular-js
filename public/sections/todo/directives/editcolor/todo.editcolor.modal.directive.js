@@ -20,8 +20,8 @@ function myTodoEditColorModaController($scope, Todo){
 
     $scope.editColor = editColor;
     
-    function editColor(color){
-        Todo.update({_id : $scope.myTodo._id, color : color.colorCode}, function(doc){
+    function editColor(){
+        Todo.update({_id : $scope.myTodo._id, color : $scope.myTodo.color}, function(doc){
             if($scope.onSuccess){
                 $scope.onSuccess(doc);
             }
