@@ -9,7 +9,7 @@ function myTodoCreateModal() {
             onSuccess: '&'
         },
         templateUrl: 'sections/todo/directives/create/todo.create.modal.html',
-        controller: ['$scope', 'Todo', 'Auth', myTodoCreateModalController]
+        controller: ['$scope', 'Todo', myTodoCreateModalController]
     }
 }
 
@@ -33,7 +33,7 @@ function myTodoCreateModalBtnController($scope) {
     }
 }
 
-function myTodoCreateModalController($scope, Todo, Auth) {
+function myTodoCreateModalController($scope, Todo) {
 
     $scope.create = create;
 
