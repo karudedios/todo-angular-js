@@ -2,60 +2,61 @@ angular.module('todoApp')
     .directive('myTodoCreateModal', myTodoCreateModal)
     .directive('myTodoCreateModalBtn', myTodoCreateModalBtn);
 
-function myTodoCreateModal(){
+function myTodoCreateModal() {
     return {
-        scope : {
-            todoModalId : '@',
-            onSuccess : '&'
+        scope: {
+            todoModalId: '@',
+            onSuccess: '&'
         },
-        templateUrl : 'sections/todo/directives/create/todo.create.modal.html',
-        controller : ['$scope', 'Todo', myTodoCreateModalController]
+        templateUrl: 'sections/todo/directives/create/todo.create.modal.html',
+        controller: ['$scope', 'Todo', myTodoCreateModalController]
     }
 }
 
-function myTodoCreateModalBtn(){
+function myTodoCreateModalBtn() {
     return {
-        scope : {
-            todoModalId : '@',
-            classes : '@?'
+        scope: {
+            todoModalId: '@',
+            classes: '@?'
         },
-        transclude : true,
-        templateUrl : 'sections/todo/directives/create/todo.create.modal.btn.html',
-        controller : ['$scope', myTodoCreateModalBtnController]
+        transclude: true,
+        templateUrl: 'sections/todo/directives/create/todo.create.modal.btn.html',
+        controller: ['$scope', myTodoCreateModalBtnController]
     }
 }
 
-function myTodoCreateModalBtnController($scope){
+function myTodoCreateModalBtnController($scope) {
     $scope.openModal = openModal;
 
-    function openModal(){
+    function openModal() {
         $('#' + $scope.todoModalId).openModal();
     }
 }
 
-function myTodoCreateModalController($scope, Todo){
-    
+function myTodoCreateModalController($scope, Todo) {
+
     $scope.create = create;
 
     $scope.todo = {
-        name : ''
+        name: ''
     };
 
-    function refreshTodo(){
+    function refreshTodo() {
         $scope.todo.name = '';
     }
 
-    function create(){
-        console.log($scope.todo)
-        Todo.save($scope.todo, function(data){
-            if($scope.onSuccess){
+    function create() {
+        var todo = $scope.todo;
+
+        Todo.save(todo, function (data) {
+            if ($scope.onSuccess) {
                 $scope.onSuccess(data);
             }
             refreshTodo();
             Materialize.toast('The Task was created succesful !', 4000)
-        }, function(err){
-            Materialize.toast('There was an Error: ' + err, 4000);
-        });
+        }, handleError);
     }
+
+    
 
 }

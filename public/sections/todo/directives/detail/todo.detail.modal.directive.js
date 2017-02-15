@@ -43,7 +43,7 @@ function myTodoDetailModalController($scope, Todo) {
                 $scope.onSuccess();
             }
             Materialize.toast('The Task "' + doc.name + '" was updated succesful', 4000);
-        })
+        }, handleError);
     }
 
     function initMaterializeDesign() {
