@@ -1,5 +1,4 @@
 'use strict';
-
 const mongoose  = require('mongoose');
 const Schema    = mongoose.Schema;
 
@@ -8,13 +7,13 @@ const TodoSchema = new Schema({
     type: String,
     required: true
   },
-  
+
   desc: {
     type: String,
     required: false,
     default: ''
   },
-  
+
   color: {
     type: String,
     required: false,
@@ -25,6 +24,11 @@ const TodoSchema = new Schema({
       },
       message: '{VALUE} is not a valid HEX color'
     }
+  },
+
+  owner: {
+    ref: 'User',
+    type: Schema.Types.ObjectId,
   }
 });
 

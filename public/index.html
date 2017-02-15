@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>todo app</title>
     <link href="../bower_components/Materialize/dist/css/materialize.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../bower_components/materialize-colorpicker/dist/css/materialize-colorpicker.min.css" rel="stylesheet"/>
+    <link href="../bower_components/prism/themes/prism.css" rel="stylesheet"/>
+
     <link href="styles/todo.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body ng-app="todoApp">
@@ -17,25 +20,38 @@
 
 </div>
 <!-- bower dependencies -->
-<script src="../bower_components/angular/angular.min.js"></script>
-<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/Materialize/bin/materialize.js"></script>
+<script type="text/javascript" src="../bower_components/angular-materialize/src/angular-materialize.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+
+<script src="../bower_components/materialize-colorpicker/dist/js/materialize-colorpicker.min.js"></script>
+<script src="../bower_components/prism/prism.js"></script>
+
 <!-- bower dependencies -->
 
 <script src="app.js"></script>
 <script src="app.state.js"></script>
+<script src="utils.js"></script>
+
+<script src="login/login.state.js"></script>
+<script src="login/login.controller.js"></script>
+<script src="login/directives/signup/login.signup.modal.directive.js"></script>
+<script src="login/directives/password/login.password.confirmation.directive.js"></script>
 
 <script src="layout/header.controller.js"></script>
 <script src="sections/home/home.state.js"></script>
 <script src="sections/todo/todo.state.js"></script>
 <script src="sections/todo/todo.controller.js"></script>
+
 <script src="sections/todo/directives/create/todo.create.modal.directive.js"></script>
 <script src="sections/todo/directives/editcolor/todo.editcolor.modal.directive.js"></script>
-
+<script src="sections/todo/directives/detail/todo.detail.modal.directive.js"></script>
 <script src="factory/todo.factory.js"></script>
-<script src="factory/todo.colors.js"></script>
+<script src="factory/user.factory.js"></script>
+<script src="factory/auth.factory.js"></script>
 
 </body>
 </html>

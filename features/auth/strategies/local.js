@@ -56,16 +56,20 @@ module.exports = class LocalAuthenticationStrategy {
         logIn(req, res, user);
       })(req, res, next);
 
-    this.signup = (req, res) =>
+    this.signup = (req, res) => {
+      const createUser = new CreateUser(User);
+
       new FindUser(User)
         .findOne({ username: req.body.username })
         .then(user => {
           if (user) throw "Username exists";
           return req.body;
         })
-        .then(new CreateUser(User).create)
+        .then(createUser.create.bind(createUser))
+        .then(UserDto.new)
         .then(logIn.bind(null, req, res))
-        .catch(err => res.status(400).send(err));
+        .catch(err => console.log(err) || res.status(400).send(err));
+    };
   }
 
   unauthenticated(req, res, next) {
